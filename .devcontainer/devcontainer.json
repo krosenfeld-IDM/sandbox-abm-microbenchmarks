@@ -1,0 +1,7 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {"installtools":true, "installJupyterlab":true},
+    "ghcr.io/julialang/devcontainer-features/julia:1": {}
+  }
+}
