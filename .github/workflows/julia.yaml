@@ -1,0 +1,60 @@
+name: julia
+on:
+  push:
+    branches:
+      - main
+      
+permissions:
+  # deployments permission to deploy GitHub pages website
+  deployments: write
+  # contents permission to update benchmark contents in gh-pages branch
+  contents: write
+
+jobs:
+  benchmark:
+    name: Run julia microbenchmarks
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        version:
+          - '1'
+        os:
+          - ubuntu-latest
+        arch:
+          - x64
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v1
+        with:
+          version: ${{ matrix.version }}
+          arch: ${{ matrix.arch }}
+      - uses: actions/cache@v4
+        env:
+          cache-name: cache-artifacts
+        with:
+          path: ~/.julia/artifacts
+          key: runner.os−test−env.cache−name−{{ hashFiles('**/Project.toml') }}
+          restore-keys: |
+            runner.os−test−
+            ${{ env.cache-name }}-
+            ${{ runner.os }}-test-
+            ${{ runner.os }}-
+      - name: Run benchmark
+        run: |
+          cd benchmarks/julia/arrays
+          julia --color=yes -e '
+            using Pkg;
+            Pkg.instantiate("environments/julia");
+            include("iterating.jl")'
+      # gh-pages branch is updated and pushed automatically with extracted benchmark data
+      - name: Store arrays result to gh-pages
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          name: Julia Benchmark
+          tool: 'julia'
+          output-file-path: benchmarks/julia/arrays/output.json
+          # Access token to deploy GitHub Pages branch
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          # Push and deploy GitHub pages branch automatically
+          auto-push: true
