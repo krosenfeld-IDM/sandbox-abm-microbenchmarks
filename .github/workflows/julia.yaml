@@ -43,9 +43,9 @@ jobs:
       - name: Run benchmark
         run: |
           cd benchmarks/julia/arrays
-          julia --color=yes -e '
+          julia --package=$GITHUB_WORKSPACE/environments/julia --color=yes -e '
             using Pkg;
-            Pkg.instantiate("environments/julia");
+            Pkg.instantiate();
             include("iterating.jl")'
       # gh-pages branch is updated and pushed automatically with extracted benchmark data
       - name: Store arrays result to gh-pages
