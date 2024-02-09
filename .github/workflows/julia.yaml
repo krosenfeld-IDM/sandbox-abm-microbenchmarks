@@ -43,7 +43,7 @@ jobs:
       - name: Run benchmark
         run: |
           cd benchmarks/julia/arrays
-          julia --package=$GITHUB_WORKSPACE/environments/julia --color=yes -e '
+          julia --project=$GITHUB_WORKSPACE/environments/julia --color=yes -e '
             using Pkg;
             Pkg.instantiate();
             include("iterating.jl")'
