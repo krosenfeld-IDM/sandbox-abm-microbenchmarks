@@ -7,5 +7,5 @@ julia --project=@. benchmarks/create_benchmark_table.jl > table.txt
 awk -v content="$(<table.txt)" '{
     gsub(/<!--dynamic-content-->/, content);
     print;
-}' .github/README.md > temp.txt 
-mv temp.txt README.md
+}' README.md > temp.txt 
+mv temp.txt .github/README.md
