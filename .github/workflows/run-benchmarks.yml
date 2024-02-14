@@ -14,7 +14,7 @@ jobs:
     steps:
        - name: Cancel ongoing test runs for previous commits
          uses: styfle/cancel-workflow-action@0.11.0
-       - uses: actions/checkout@v3
+       - uses: actions/checkout@v4
        - name: setup-benchmarks
          run: bash ./.github/setup.sh
        - name: run-benchmarks
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v2      
+        uses: actions/checkout@v4
       - name: Run script to update README
         run: bash ./.github/update_readme.sh
       - name: Commit and push if changed
