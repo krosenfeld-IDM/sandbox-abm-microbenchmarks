@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # Generate output to insert into README
-output=$(julia --project=@. benchmarks/create_benchmark_table.jl)
-
-# Placeholder in README to replace with output
-placeholder="<!--dynamic-content-->"
+julia --project=@. benchmarks/create_benchmark_table.jl > table.txt
 
 # Replace placeholder in README.md with actual output
-sed -i "s:$placeholder:$output:g" README.md
+awk -v content="$(<table.txt)" '{
+    gsub(/<!--dynamic-content-->/, content);
+    print;
+}' README.md > temp.txt 
+mv temp.txt README.md
