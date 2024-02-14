@@ -18,6 +18,6 @@ pip install numpy numba polars
 
 # save current directory
 export CURRENT_DIR=$(pwd) 
-cd arrays/c-extension
+cd benchmarks/arrays/c-extension
 make
 cd $CURRENT_DIR

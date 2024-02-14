@@ -7,4 +7,4 @@ output=$(julia --project=@. benchmarks/create_benchmark_table.jl)
 placeholder="<!--dynamic-content-->"
 
 # Replace placeholder in README.md with actual output
-sed -i "s|$placeholder|$output|g" README.md
+sed -i "s:$placeholder:$output:g" README.md
