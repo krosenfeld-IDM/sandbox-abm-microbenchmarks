@@ -19,3 +19,16 @@ jobs:
          run: bash ./.github/setup.sh
        - name: run-benchmarks
          run: bash ./.github/run-arrays.sh
+  Update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2      
+      - name: Run script to update README
+        run: bash ./.github/update_readme.sh
+      - name: Commit and push if changed
+        run: |
+          git diff
+          git add README.md
+          git commit -m "Update README" || echo "No changes to commit"
+          git push
