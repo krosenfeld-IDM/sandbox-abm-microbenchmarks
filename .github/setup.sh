@@ -12,6 +12,10 @@ export PATH=$PATH:$(pwd)"/julia-1.9.4/bin"
 printf "\nexport PATH=\"\$PATH:"$(pwd)"/julia-1.9.4/bin\"" >> ~/.bashrc
 julia --project=@. -e 'using Pkg; Pkg.instantiate()'
 
+# install python
+sudo apt install python3-pip
+pip install numpy numba polars
+
 # save current directory
 export CURRENT_DIR=$(pwd) 
 cd arrays/c-extension
