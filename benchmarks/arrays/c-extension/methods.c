@@ -40,6 +40,20 @@ long long sum_array_int64(const int64_t* array, size_t length) {
     return sum;
 }
 
+// Function to fill an int8 array with a constant value
+void fill_constant_int8(int8_t* array, size_t size, int8_t value) {
+    for (size_t i = 0; i < size; i++) {
+        array[i] = value;
+    }
+}
+
+// Function to fill an int64 array with a constant value
+void fill_constant_int64(int64_t* array, size_t size, int64_t value) {
+    for (size_t i = 0; i < size; i++) {
+        array[i] = value;
+    }
+}
+
 // Function to fill specific indices in an int8 array
 void fill_specific_indices_int8(int8_t* array, size_t array_size, const size_t* indices, size_t indices_size, int8_t value) {
     for (size_t i = 0; i < indices_size; i++) {
