@@ -10,6 +10,6 @@ julia --project=@. benchmarks/arrays/julia/benchmark_arrays.jl
 echo "Benchmarking c-extensions"
 python benchmarks/arrays/c-extension/benchmark_arrays.py
 
-) | tee benchmark_results.txt
+) | tee benchmark_results_arrays.txt
 
-julia --project=@. benchmarks/create_benchmark_table.jl
+# julia --project=@. benchmarks/create_benchmark_table.jl

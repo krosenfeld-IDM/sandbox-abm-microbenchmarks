@@ -1,12 +1,12 @@
 using PrettyTables
 
-platforms = ["julia", "numpy", "c-ext"]
+platforms = ["numpy", "c-ext", "julia"]
 reference_platform = platforms[1]
 benchmarks = ["sum-int8", "sum-int64", "fill-ordered-int8", "fill-ordered-int64", "fill-random-int8", "fill-random-int64"]
 
 frameworks_times = Dict(m => Dict(f => 0.0 for f in platforms) for m in benchmarks)
 		  
-open("benchmark_results.txt", "r") do f
+open("benchmark_results_arrays.txt", "r") do f
     for line in readlines(f)
 	!occursin("(ms)", line) && continue
         s_line = split(line)

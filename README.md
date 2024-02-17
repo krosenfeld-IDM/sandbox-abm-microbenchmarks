@@ -2,7 +2,12 @@
 Sandbox for microbenchmarks
 
 ## Results
-<!--dynamic-content-->
+
+### Arrays
+<!--dynamic-content-arrays-->
+
+### Queues
+<!--dynamic-content-queues-->
 
 **References**
 - https://github.com/JuliaDynamics/ABMFrameworksComparison/tree/main
