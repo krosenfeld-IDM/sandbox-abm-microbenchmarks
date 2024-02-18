@@ -19,6 +19,8 @@ julia --project=@. benchmarks/arrays/create_benchmark_table.jl
 echo "Benchmarking queues"
 echo "heapq..."
 python benchmarks/queues/heapq/benchmark_priority_queues.py
+echo "dict..."
+python benchmarks/queues/dict-map/benchmark_map_queues.py
 echo "julia..."
 julia --project=@. benchmarks/queues/julia/benchmark_priority_queues.jl
 
