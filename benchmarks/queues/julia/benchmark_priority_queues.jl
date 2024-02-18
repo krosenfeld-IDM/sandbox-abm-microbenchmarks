@@ -26,7 +26,15 @@ println("$platform build (ms): ", median(b.times) * 1e-6)
 ######################
 # Pop queue
 
-b = @benchmark pop!(ch) setup=(ch = build_heap(10^5)) evals=1
+function complete_pop!(h)
+    p = pop!(h)
+    cnt = 0
+    for v in p[2]
+        cnt += 1
+    end
+end
+
+b = @benchmark complete_pop!(ch) setup=(ch = build_heap(10^5)) evals=1
 println("$platform pop (ms): ", median(b.times) * 1e-6)
 
 ######################
