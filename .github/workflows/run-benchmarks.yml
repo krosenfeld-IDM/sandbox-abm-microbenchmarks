@@ -17,8 +17,10 @@ jobs:
       - uses: actions/checkout@v4
       - name: setup-benchmarks
         run: bash ./.github/setup.sh
-      - name: run-benchmarks
+      - name: Run arrays benchmarks
         run: bash ./.github/run-arrays.sh
+      - name: Run queues benchmarks
+        run: bash ./.github/run-queues.sh
       - name: Run script to update README
         run: bash ./.github/update_readme.sh
       - name: Configure git
