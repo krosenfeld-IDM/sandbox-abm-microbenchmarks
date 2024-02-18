@@ -4,6 +4,9 @@ echo "Benchmarking queues"
 echo "Benchmarking heapq"
 python benchmarks/queues/heapq/benchmark_priority_queues.py
 
+echo "Benchmarking dict-map"
+python benchmarks/queues/dict-map/benchmark_map_queues.py
+
 echo "Benchmarking julia"
 julia --project=@. benchmarks/queues/julia/benchmark_priority_queues.jl
 
