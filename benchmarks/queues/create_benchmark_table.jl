@@ -1,6 +1,6 @@
 using PrettyTables
 
-platforms = ["heapq", "julia"]
+platforms = ["heapq", "dict", "julia"]
 reference_platform = platforms[1]
 benchmarks = ["build", "pop", "deplete"]
 

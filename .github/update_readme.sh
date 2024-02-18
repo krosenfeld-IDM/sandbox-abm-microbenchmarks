@@ -7,7 +7,7 @@ julia --project=@. benchmarks/arrays/create_benchmark_table.jl > table.txt
 awk -v content="$(<table.txt)" '{
     gsub(/<!--dynamic-content-arrays-->/, content);
     print;
-}' README.md > README.md 
+}' README.md > tmp.txt
 
 # Generate output to insert into README
 julia --project=@. benchmarks/queues/create_benchmark_table.jl > table.txt
@@ -16,5 +16,5 @@ julia --project=@. benchmarks/queues/create_benchmark_table.jl > table.txt
 awk -v content="$(<table.txt)" '{
     gsub(/<!--dynamic-content-queues-->/, content);
     print;
-}' README.md > temp.txt 
+}' tmp.txt > temp.txt 
 mv temp.txt .github/README.md
